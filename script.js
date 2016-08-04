@@ -1,25 +1,33 @@
+var inputTimeout;
+
 $(document).ready(function() {
 
+
 	$('#queryBox').on('input', function() {
-
-		var queryResult;
-		var queryText = $("#queryBox").val().trim();
-
-		try
-		{
-			queryResult = evaluate(queryText);
-
-			$("#resultText").text("= " + queryResult);
-		}
-		catch (e)
-		{
-			$("#resultText").text("");
-		}
+	
+		clearTimeout(inputTimeout);
+		inputTimeout = setTimeout(doQueryResult, 250);
 	});
 
 	$('#queryBox').focus();
 });
 
+function doQueryResult()
+{
+	var queryResult;
+	var queryText = $("#queryBox").val().replace(' ', '');
+
+	try
+	{
+		queryResult = evaluate(queryText);
+
+		$("#resultText").text("= " + queryResult);
+	}
+	catch (e)
+	{
+		$("#resultText").text("");
+	}
+}
 function findOperator(expression, operator)
 {
 	var paranthesisLevel = 0;
@@ -46,6 +54,8 @@ function evaluate(expression)
 	var _minus = findOperator(expression, '-');
 	var _mult = findOperator(expression, '*');
 	var _div = findOperator(expression, '/');
+	var _pow = findOperator(expression, '^');
+
 	var left_result, right_result;
 	var result;
 
@@ -59,9 +69,16 @@ function evaluate(expression)
 		}
 		else
 		{
-			left_result = evaluate(expression.slice(0, _minus));
-			right_result = evaluate(expression.slice(_minus+1, expression.length));
-			result = left_result - right_result;
+			if (_minus != 0)
+			{
+				left_result = evaluate(expression.slice(0, _minus));
+				right_result = evaluate(expression.slice(_minus+1, expression.length));
+				result = left_result - right_result;
+			}
+			else
+			{
+				result = 0 - evaluate(expression.slice(_minus+1, expression.length));
+			}
 		}
 	}
 	else if (_mult != -1 || _div != -1)
@@ -78,6 +95,13 @@ function evaluate(expression)
 			right_result = evaluate(expression.slice(_div+1, expression.length));
 			result = left_result / right_result;
 		}
+	}
+	else if (_pow != -1)
+	{
+		left_result = evaluate(expression.slice(0, _pow));
+		right_result = evaluate(expression.slice(_pow+1, expression.length));
+
+		return Math.pow(left_result, right_result);
 	}
 	else if (expression[0] == '(' && expression[expression.length-1] == ')')
 	{
