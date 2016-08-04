@@ -1,0 +1,24 @@
+html, body {
+	width:100%;
+}
+
+
+#title {
+	padding-bottom: 30px;
+}
+
+#queryBox {
+	width:50%;
+	display:block;
+	margin: 0 auto;
+	height: 50px;
+
+	font-size: 40px;
+}
+
+#resultText {
+	padding-top: 15px;
+
+	font-size: 40px;
+	color:#456A50;
+}
