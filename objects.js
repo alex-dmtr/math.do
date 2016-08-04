@@ -1,0 +1,16 @@
+var objects = [
+
+	{ "name":  "triangle",
+	  "type": "shape",
+	  "title": "Triangle",
+	  "definition": "A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry."
+     },
+
+     {
+     	"name": "square",
+     	"type": "shape",
+     	"title": "Square",
+     	"definition": "In geometry, a square is a regular quadrilateral, which means that it has four equal sides and four equal angles (90-degree angles, or right angles). It can also be defined as a rectangle in which two adjacent sides have equal length."
+     }
+
+]

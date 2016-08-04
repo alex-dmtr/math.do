@@ -15,16 +15,51 @@ $(document).ready(function() {
 function doQueryResult()
 {
 	var queryResult;
-	var queryText = $("#queryBox").val().replace(' ', '');
+	var queryText = $("#queryBox").val();
+
+	var tokens = parseTokens(queryText);
+
+
+	// var obj = findObject(objects, tokens[0]);
+
+	// if (obj != null)
+	// {
+	// 	$("#object-title").text(obj.title);
+	// 	$("#object-definition").text(obj.definition);
+
+	// 	$("#object-container").show();
+	// 	$("#result-text").hide();
+	// }
+
+	var tokenExpression = evaluateTokens(tokens, 0, tokens.length);
+
+
+	$("#tokensText").text(tokens);
 
 	try
 	{
-		queryResult = evaluate(queryText);
+		if (tokenExpression[tokenExpression.length-1] != ')')
+			tokenExpression = tokenExpression + "()";
+		$("#tokensEvalText").text(tokenExpression);
 
-		$("#resultText").text("= " + queryResult);
+		var tokenResult = eval(tokenExpression);
+
+		
+		$("#resultText").text("= " + tokenResult.info);
 	}
 	catch (e)
 	{
-		$("#resultText").text("");
+		try
+		{
+			queryResult = evaluate(queryText);
+
+			$("#resultText").text("= " + queryResult);
+			// $("#resultText").text("= " + queryResult);
+		}
+		catch (e)
+		{
+			$("#resultText").text("");
+		}
 	}
+
 }
