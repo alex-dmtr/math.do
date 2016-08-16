@@ -67,6 +67,12 @@ function evaluateTokens(tokens, start, end)
 	var _with = findToken(tokens, start, end, "with");
 	var _equals = findToken(tokens, start, end, "=");
 	var _colon = findToken(tokens, start, end, ":");
+
+	var _plus = findToken(tokens, '+');
+	var _minus = findToken(tokens, '-');
+	var _mult = findToken(tokens, '*');
+	var _div = findToken(tokens, '/');
+	var _pow = findToken(tokens, '^');
 	var left_result, right_result;
 	var result;
 
