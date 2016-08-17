@@ -58,7 +58,7 @@ function doQueryResult()
 		}
 		catch (e)
 		{
-			$("#resultText").text("");
+			$("#resultText").text(e);
 		}
 	}
 

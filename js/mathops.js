@@ -25,6 +25,7 @@ function evaluate(expression)
 	var _mult = findOperator(expression, '*');
 	var _div = findOperator(expression, '/');
 	var _pow = findOperator(expression, '^');
+	var _fact = findOperator(expression, '!');
 
 	var left_result, right_result;
 	var result;
@@ -72,6 +73,22 @@ function evaluate(expression)
 		right_result = evaluate(expression.slice(_pow+1, expression.length));
 
 		return Math.pow(left_result, right_result);
+	}
+	else if (_fact != -1)
+	{
+		left_result = evaluate(expression.slice(0, _fact));
+
+		result = 1;
+		if (left_result != Math.floor(left_result))
+			throw "factorial of a non-whole number";
+
+		while (left_result >= 1)
+		{
+			result *= left_result;
+			left_result--;
+		}
+
+		return result;
 	}
 	else if (expression[0] == '(' && expression[expression.length-1] == ')')
 	{
