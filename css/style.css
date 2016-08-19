@@ -5,6 +5,17 @@ html, body {
 
 #title {
 	padding-bottom: 30px;
+	font-family: Helvetica;
+	font-size: 50px;
+}
+
+#title-math {
+	color: #7C7676;
+}
+
+#title-do {
+
+	color: #FF7F50;
 }
 
 #queryBox {

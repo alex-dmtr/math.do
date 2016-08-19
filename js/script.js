@@ -51,6 +51,7 @@ function doQueryResult()
 	{
 		try
 		{
+			queryText = queryText.split(' ').join('');
 			queryResult = evaluate(queryText);
 
 			$("#resultText").text("= " + queryResult);
