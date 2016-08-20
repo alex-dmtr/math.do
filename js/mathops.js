@@ -1,3 +1,5 @@
+"use strict";
+
 function findOperator(expression, operator)
 {
 	var paranthesisLevel = 0;

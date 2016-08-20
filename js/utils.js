@@ -1,3 +1,5 @@
+"use strict";
+
 function parseTokens(expression)
 {
 	var tokens = [];
