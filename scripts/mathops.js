@@ -2,6 +2,7 @@
 
 function findOperator(expression, operator)
 {
+
 	var paranthesisLevel = 0;
 
 	var i = expression.length-1;
@@ -18,7 +19,7 @@ function findOperator(expression, operator)
 	}
 
 	return -1;
-}
+};
 
 function evaluate(expression)
 {
@@ -106,4 +107,10 @@ function evaluate(expression)
 	}
 
 	return result;
-}
+};
+
+module.exports = {
+
+	evaluate: evaluate
+
+};

@@ -16,53 +16,67 @@ $(document).ready(function() {
 
 function doQueryResult()
 {
-	var queryResult;
+	// var queryResult;
 	var queryText = $("#queryBox").val();
 
-	var tokens = parseTokens(queryText);
-
-
-	// var obj = findObject(objects, tokens[0]);
-
-	// if (obj != null)
-	// {
-	// 	$("#object-title").text(obj.title);
-	// 	$("#object-definition").text(obj.definition);
-
-	// 	$("#object-container").show();
-	// 	$("#result-text").hide();
-	// }
-
-	var tokenExpression = evaluateTokens(tokens, 0, tokens.length);
-
-
-	$("#tokensText").text(tokens);
-
-	try
+	if (queryText.length > 0)
 	{
-		if (tokenExpression[tokenExpression.length-1] != ')')
-			tokenExpression = tokenExpression + "()";
-		$("#tokensEvalText").text(tokenExpression);
+		$.ajax({
+			url: '/' + queryText,
+			method: 'GET',
 
-		var tokenResult = eval(tokenExpression);
+			success: function(result)
+			{
+				$("#resultText").text(result);
+			}
+
+		});
+	}
+
+	// var tokens = parseTokens(queryText);
+
+
+	// // var obj = findObject(objects, tokens[0]);
+
+	// // if (obj != null)
+	// // {
+	// // 	$("#object-title").text(obj.title);
+	// // 	$("#object-definition").text(obj.definition);
+
+	// // 	$("#object-container").show();
+	// // 	$("#result-text").hide();
+	// // }
+
+	// var tokenExpression = evaluateTokens(tokens, 0, tokens.length);
+
+
+	// $("#tokensText").text(tokens);
+
+	// try
+	// {
+	// 	if (tokenExpression[tokenExpression.length-1] != ')')
+	// 		tokenExpression = tokenExpression + "()";
+	// 	$("#tokensEvalText").text(tokenExpression);
+
+	// 	var tokenResult = eval(tokenExpression);
 
 		
-		$("#resultText").text("= " + tokenResult.info);
-	}
-	catch (e)
-	{
-		try
-		{
-			queryText = queryText.split(' ').join('');
-			queryResult = evaluate(queryText);
+	// 	$("#resultText").text("= " + tokenResult.info);
+	// }
+	// catch (e)
+	// {
+	// 	try
+	// 	{
+	// 		queryText = queryText.split(' ').join('');
+	// 		queryResult = evaluate(queryText);
 
-			$("#resultText").text("= " + queryResult);
-			// $("#resultText").text("= " + queryResult);
-		}
-		catch (e)
-		{
-			$("#resultText").text(e);
-		}
-	}
+	// 		$("#resultText").text("= " + queryResult);
+	// 		// $("#resultText").text("= " + queryResult);
+	// 	}
+	// 	catch (e)
+	// 	{
+	// 		$("#resultText").text(e);
+	// 	}
+	// }
 
 }
