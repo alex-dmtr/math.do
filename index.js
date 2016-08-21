@@ -7,12 +7,14 @@ app.use(express.static('public'));
 app.use('/static', express.static(__dirname  + '/public'));
 
 app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/public/index.html');
+
+	response.sendFile(__dirname + '/public/index.html');
+
 });
 
-app.get('/:query', function(request, response) {
-	var queryText = request.params.query;
-
+app.get('/query', function(request, response) {
+	// var queryText = encodeURIComponent(request.params.query);
+	var queryText = request.query.q;
 
 	var utils = require(__dirname + '/scripts/utils.js');
 	var mathops = require(__dirname + '/scripts/mathops.js');

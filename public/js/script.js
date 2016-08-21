@@ -22,8 +22,9 @@ function doQueryResult()
 	if (queryText.length > 0)
 	{
 		$.ajax({
-			url: '/' + queryText,
+			url: '/query',
 			method: 'GET',
+			data: {q: queryText},
 
 			success: function(result)
 			{
