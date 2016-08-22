@@ -8,3 +8,6 @@ Although very similar in purpose to wolfram alpha (on which it is based), it has
 
 Implemented so far is a simple expression evaluation with built-in operator order. It can be used as a calculator for simple expressions, such as 2 + 2 or 17 * (3 + 4 / 5).
 
+## How to run server 
+
+`node index.js`
