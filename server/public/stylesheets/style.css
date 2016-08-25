@@ -11,6 +11,7 @@ html, body {
 .title {
 	font-size: 50px;
 	margin-bottom: 30px;
+	width: 100%;
 }
 
 .title-sidebar {
@@ -33,6 +34,11 @@ html, body {
 	color: #ffc2b3;
 }
 
+/*.container {
+	padding-left: 12.5%;
+	padding-right: 12.5%;
+}*/
+
 /*.title-sidebar-math:after, .title-sidebar-do:after {
     -webkit-transition: 2s;
     transition: 0.75s;
@@ -52,15 +58,54 @@ html, body {
 	font-size: 40px;
 }*/
 
-#queryBox {
-	width:40%;
-	display:block;
-	margin: 0 auto;
-	/*margin-top:175px;*/
+.title-math:after {
+	content: 'ath.';
+    -webkit-transition: 0.75s;
+    transition: 0.75s;
+}
 
+.title-do:after {
+	content: 'o';
+    -webkit-transition: 0.75s;
+    transition: 0.75s;
+}
+
+.title:hover > .title-math:after {
+	font-size: 0px;
+}
+
+.title:hover > .title-do:after {
+	font-size: 0px;
+}
+
+.title:hover > .title:after {
+	content: ' | 2016';
+}
+
+.queryContainer {
+
+	width:70%;
+
+	margin: 0 auto;
+}
+
+.textCorrection {
+	font-size: 15px;
+}
+
+#correctedText {
+	color: #6699CC;
+}
+
+#queryBox {
+	/*margin-top:175px;*/
+	width: 89.5%;
+	display: block;
+	margin: 0 auto;
 	height: 50px;
 
 	font-size: 40px;
+	margin-bottom: 20px;
 }
 
 #resultText {

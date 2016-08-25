@@ -28,6 +28,13 @@ function doQueryResult()
 
 			success: function(result)
 			{
+				var jsonObject = JSON.parse(result);
+				if (jsonObject.correctedText) {
+					$(".textCorrection").show();
+					$("#correctedText").text(jsonObject.correctedText);
+				}
+				else
+					$(".textCorrection").hide();
 				$("#debugText").text(result);
 			}
 

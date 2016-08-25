@@ -22,7 +22,6 @@ function evaluateInput(input) {
       else
       {
         var closestString = inputParsing.getClosestString(token.text, Object.keys(dbObjects));
-        console.log(closestString);
         if (closestString != null && dbObjects.hasOwnProperty(closestString)) 
         {
           isObject = true;
