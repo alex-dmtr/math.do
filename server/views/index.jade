@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1#title(align='center')
+    span#title-math math.
+    span#title-do do
+  input#queryBox.form-control(align='center', type='text')
+  h4#resultText(align='center')
+  h4#tokensText(align='center')
+  h4#tokensEvalText(align='center')
+  #object-container
+    h6#object-title(align='center')
+    em#object-definition
+
