@@ -3,26 +3,61 @@ html, body {
 }
 
 
-#title {
-	padding-bottom: 30px;
+.title, .title-sidebar {
 	font-family: Helvetica;
-	font-size: 50px;
 	font-weight: bold;
 }
 
-#title-math {
+.title {
+	font-size: 50px;
+	margin-bottom: 30px;
+}
+
+.title-sidebar {
+	font-size: 40px;
+	/*opacity: 0.7;*/
+}
+
+.title-math {
 	color: #7C7676;
 }
 
-#title-do {
-
-	color: #FF7F50;
+.title-sidebar-math {
+	color: #dad8d8;
 }
+
+.title-do {
+	color: #FF7F50
+}
+.title-sidebar-do {
+	color: #ffc2b3;
+}
+
+/*.title-sidebar-math:after, .title-sidebar-do:after {
+    -webkit-transition: 2s;
+    transition: 0.75s;
+    font-size: 0;
+
+}
+
+.title-sidebar-math:after {
+	content: 'ath.';
+}
+
+.title-sidebar-do:after {
+	content: 'o';
+}
+
+.title-sidebar:hover > .title-sidebar-math:after, .title-sidebar:hover > .title-sidebar-do:after {
+	font-size: 40px;
+}*/
 
 #queryBox {
 	width:40%;
 	display:block;
 	margin: 0 auto;
+	/*margin-top:175px;*/
+
 	height: 50px;
 
 	font-size: 40px;

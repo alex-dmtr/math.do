@@ -28,11 +28,13 @@ function doQueryResult()
 
 			success: function(result)
 			{
-				$("#resultText").text(result);
+				$("#debugText").text(result);
 			}
 
 		});
 	}
+	else
+		$("#debugText").text("");
 
 	// var tokens = parseTokens(queryText);
 

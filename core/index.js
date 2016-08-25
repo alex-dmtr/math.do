@@ -1,68 +1,64 @@
-var utils = require('./utils.js');
+var settings = require('./settings.json');
+var dbObjects = require('./dbObjects.json');
+var inputParsing = require('./inputParsing.js');
 var mathops = require('./mathops.js');
 
 function evaluateInput(input) {
-  input = input.split(' ').join('');
-	result = mathops.evaluate(input);
+  var tokens = inputParsing.parseTokens(input);
 
-  return result.toString();
+  var isTextCorrection = false;
+  var inputObjects = [];
+  var correctedText = null;
+  tokens.forEach(function(token) {
+
+    var isObject = false;
+    if (settings.specialCharacters.indexOf(token.text) == -1) 
+    {
+      if (dbObjects.hasOwnProperty(token.text))
+      {
+        isObject = true;
+        token.object = dbObjects[token.text];
+      }
+      else
+      {
+        var closestString = inputParsing.getClosestString(token.text, Object.keys(dbObjects));
+        console.log(closestString);
+        if (closestString != null && dbObjects.hasOwnProperty(closestString)) 
+        {
+          isObject = true;
+          token.object = dbObjects[closestString];
+          token.textCorrection = closestString;
+          isTextCorrection = true;
+        }
+      }
+    }
+
+    if (isObject)
+      inputObjects.push(token.object);
+  });
+
+  if (isTextCorrection) {
+
+    correctedText = "";
+    var correctedTokens = [];
+    tokens.forEach(function(token) {
+      if (token.textCorrection)
+        correctedTokens.push(token.textCorrection);
+      else
+        correctedTokens.push(token.text);
+    })
+
+    correctedText = correctedTokens.join(' ');
+  }
+
+  var result = {
+    tokens: tokens,
+    inputObjects: inputObjects,
+    correctedText: correctedText
+  }
+  return result;
 };
 
 module.exports = {
   evaluateInput: evaluateInput
 };
-
-// var express = require('express');
-// var app = express();
-// var port = 3001;
-
-// app.use(express.static('public'));
-
-// app.use('/static', express.static(__dirname  + '/public'));
-
-// app.get('/', function (request, response) {
-
-// 	response.sendFile(__dirname + '/public/index.html');
-
-// });
-
-// app.get('/query', function(request, response) {
-// 	// var queryText = encodeURIComponent(request.params.query);
-// 	var queryText = request.query.q;
-
-// 	var utils = require(__dirname + '/scripts/utils.js');
-// 	var mathops = require(__dirname + '/scripts/mathops.js');
-
-// 	// console.log(queryText);
-// 	try
-// 	{
-// 		queryText = queryText.split(' ').join('');
-// 		queryResult = mathops.evaluate(queryText);
-		
-// 		response.send("= " + queryResult);
-// 		// $("#resultText").text("= " + queryResult);
-// 		// $("#resultText").text("= " + queryResult);
-// 	}
-// 	catch (e)
-// 	{
-// 		response.send(e);
-// 		// $("#resultText").text(e);
-// 	}
-		
-// });
-
-// app.get('/lev', function(request, response) {
-// 	var a = request.query.a, b = request.query.b;
-
-// 	var levenshtein = require(__dirname + "/scripts/levenshtein.js");
-
-// 	response.send("distance = " + levenshtein.getEditDistance(a, b));
-// });
-
-// // app.get('/hello', function (req, res) {
-// // 	res.send("hello. is it me you're looking for?");
-// // });
-
-// app.listen(port, function () {
-//   console.log('Example app listening on port ' + port);
-// });

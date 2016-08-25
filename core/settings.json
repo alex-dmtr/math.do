@@ -1,0 +1,5 @@
+{
+	"stringMatchPercent": 0.3,
+	"specialCharacters" : ["+", "-", "*", "/", "^", "=", "(", ")"],
+	"delimiters": [" ", "\t"]
+}
