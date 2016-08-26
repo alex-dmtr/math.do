@@ -1,85 +1,76 @@
+@import "nib"
+
 html, body {
 	width:100%;
+	height: 100%;
+}
+
+/*body {
+  	transform: rotate(-5deg);
+  background: radial-gradient(center, crimson, darken(crimson, 60%));
+}*/
+
+:root{
+	--primary-color: #7C7676;
+	--secondary-color: #FF7F50;
 }
 
 
-.title, .title-sidebar {
+.title  {
 	font-family: Helvetica;
 	font-weight: bold;
 }
 
 .title {
 	font-size: 50px;
-	margin-bottom: 30px;
-	width: 100%;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 50%;
+	margin: 0 auto;
 }
 
-.title-sidebar {
-	font-size: 40px;
-	/*opacity: 0.7;*/
-}
 
 .title-math {
-	color: #7C7676;
-}
-
-.title-sidebar-math {
-	color: #dad8d8;
+	color: var(--primary-color);
 }
 
 .title-do {
-	color: #FF7F50
-}
-.title-sidebar-do {
-	color: #ffc2b3;
+	color: var(--secondary-color);
 }
 
-/*.container {
-	padding-left: 12.5%;
-	padding-right: 12.5%;
-}*/
-
-/*.title-sidebar-math:after, .title-sidebar-do:after {
-    -webkit-transition: 2s;
+.title-math, .title-do, .title:after, .title-math:after, .title-do:after {
+	-webkit-transition: 0.75s;
     transition: 0.75s;
-    font-size: 0;
-
 }
-
-.title-sidebar-math:after {
-	content: 'ath.';
-}
-
-.title-sidebar-do:after {
-	content: 'o';
-}
-
-.title-sidebar:hover > .title-sidebar-math:after, .title-sidebar:hover > .title-sidebar-do:after {
-	font-size: 40px;
-}*/
 
 .title-math:after {
 	content: 'ath.';
-    -webkit-transition: 0.75s;
-    transition: 0.75s;
 }
 
 .title-do:after {
 	content: 'o';
-    -webkit-transition: 0.75s;
+}
+
+.title:hover > .title-math:after, .title:hover > .title-do:after {
+	font-size: 0px;
+}
+
+.title:hover  .title-math {
+	/*color: var(primary-color);*/
+	/*font-size: 0px;*/
+}
+
+.title:after {
+	content: ' | 2016';
+	font-size: 0px;
+	-webkit-transition: 0.75s;
     transition: 0.75s;
 }
 
-.title:hover > .title-math:after {
-	font-size: 0px;
-}
-
-.title:hover > .title-do:after {
-	font-size: 0px;
-}
-
-.title:hover > .title:after {
-	content: ' | 2016';
+.title:hover:after {
+	font-size: 50px;
+	color: var(--primary-color);
+	opacity: 0.5;
 }
 
 .queryContainer {
@@ -115,10 +106,6 @@ html, body {
 	color:#456A50;
 }
 
-#tokensText, #tokensEvalText {
-	font-family: "Lucida Console", Monaco, monospace;
-}
-
 #object-container {
 	width:40%;
 	display:block;
@@ -129,4 +116,12 @@ html, body {
 	color:#FF7F50;
 	font-size: 40px;
 	
+}
+
+#menu-icon {
+	font-size:30px; 
+	margin-top:15px;
+	margin-left: 10px; 
+	color:var(--primary-color)
+
 }

@@ -15,9 +15,13 @@ html
   body
     .navbar.navbar-fixed-top
       .container-fluid
+        span.glyphicon.glyphicon-menu-hamburger#menu-icon
           //- span.title-sidebar
           //-   span.title-sidebar-math m
           //-   span.title-sidebar-do d
     .container
+      h1.title(align='center')
+        span.title-math m
+        span.title-do d
       block content
 
