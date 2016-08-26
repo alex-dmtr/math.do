@@ -1,14 +1,22 @@
 extends layout
 
 block content
-  h1#title(align='center')
-    span#title-math math.
-    span#title-do do
-  input#queryBox.form-control(align='center', type='text')
-  h4#resultText(align='center')
-  h4#tokensText(align='center')
-  h4#tokensEvalText(align='center')
-  #object-container
-    h6#object-title(align='center')
-    em#object-definition
+  script(src='javascripts/script.js')
+  
+  h1.title(align='center')
+    span.title-math math.
+    span.title-do do
+  .queryContainer
+    input.form-control(align='center', type='text')#queryBox
+    i.textCorrection(hidden)
+      span Interpreted as 
+      span
+        u#correctedText 
+    h4#resultText(align='center')
+    p#debugText
+  //- h4#tokensText(align='center')
+  //- h4#tokensEvalText(align='center')
+  //- #object-container
+  //-   h6#object-title(align='center')
+  //-   em#object-definition
 
