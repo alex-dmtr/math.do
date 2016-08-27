@@ -11,13 +11,16 @@ html
     link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
     script(src='javascripts/bootstrap.min.js')
     link(rel='stylesheet', href='stylesheets/style.css')
+    script(src='javascripts/script.js')
     title=title
   body
-    .navbar.navbar-fixed-top
-      .container-fluid
+    ul.menu
+      li.glyphicon.glyphicon-menu-hamburger.menu-icon
+      li.menu-item
+        span  > 
+          a(href='https://github.com/alex-dmtr/math.do', target='_blank') about
           //- span.title-sidebar
           //-   span.title-sidebar-math m
           //-   span.title-sidebar-do d
     .container
       block content
-
