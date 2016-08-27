@@ -4,6 +4,7 @@ var inputParsing = require('./inputParsing.js');
 var mathops = require('./mathops.js');
 
 function evaluateInput(input) {
+  return mathops.evaluate(input.split(' ').join(''));
   var tokens = inputParsing.parseTokens(input);
 
   var isTextCorrection = false;
